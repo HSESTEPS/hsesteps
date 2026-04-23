@@ -19,33 +19,41 @@ height: 100vh;
 background: url('banner.png') no-repeat center center/cover;
 }
 
-/* Falling Leaves */
+/* Leaf Style */
 .leaf {
 position: absolute;
-top: -50px;
-width: 30px;
-height: 30px;
-background: url('https://cdn-icons-png.flaticon.com/512/2909/2909762.png') no-repeat center/contain;
-opacity: 0.8;
-animation: fall linear infinite;
+top: -60px;
+width: 50px;
+height: 50px;
+background: radial-gradient(circle at 30% 30%, #00c853, #1b5e20);
+border-radius: 50% 0 50% 50%;
+opacity: 0.9;
+animation: fall linear infinite, sway ease-in-out infinite;
 }
 
-/* Animation */
+/* Falling Animation */
 @keyframes fall {
 0% {
-transform: translateY(-50px) rotate(0deg);
+transform: translateY(-60px) rotate(0deg);
 }
 100% {
 transform: translateY(110vh) rotate(360deg);
 }
 }
 
-/* Different speeds */
-.leaf:nth-child(1) { left: 10%; animation-duration: 10s; }
-.leaf:nth-child(2) { left: 25%; animation-duration: 14s; }
-.leaf:nth-child(3) { left: 40%; animation-duration: 12s; }
-.leaf:nth-child(4) { left: 60%; animation-duration: 16s; }
-.leaf:nth-child(5) { left: 80%; animation-duration: 11s; }
+/* Side-to-side gentle movement */
+@keyframes sway {
+0%, 100% { transform: translateX(0px); }
+50% { transform: translateX(40px); }
+}
+
+/* Positioning (more on right side) */
+.leaf:nth-child(1) { left: 55%; animation-duration: 14s, 5s; }
+.leaf:nth-child(2) { left: 65%; animation-duration: 16s, 6s; }
+.leaf:nth-child(3) { left: 75%; animation-duration: 13s, 4s; }
+.leaf:nth-child(4) { left: 85%; animation-duration: 18s, 5s; }
+.leaf:nth-child(5) { left: 92%; animation-duration: 15s, 6s; }
+
 </style>
 
 </head>
@@ -54,7 +62,7 @@ transform: translateY(110vh) rotate(360deg);
 
 <div class="banner"></div>
 
-<!-- Leaves -->
+<!-- Falling Leaves -->
 <div class="leaf"></div>
 <div class="leaf"></div>
 <div class="leaf"></div>
