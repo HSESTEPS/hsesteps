@@ -5,102 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-margin: 0;
-font-family: Arial, sans-serif;
-background: black;
-overflow-x: hidden;
+body { margin: 0; background: black; }
+
+/* 1. Create a wrapper to hold the banner and the leaves together */
+.banner-wrapper {
+    position: relative; /* This makes the banner the reference point */
+    width: 100%;
+    overflow: hidden; /* Ensures leaves don't overflow outside the banner */
 }
 
-/* Banner (full scroll visible) */
 .banner {
-width: 100%;
-height: auto;
-display: block;
+    width: 100%;
+    display: block;
 }
 
-/* Leaf styling */
+/* 2. Position leaves relative to the wrapper */
 .leaf {
-position: fixed;
-top: -120px;
-width: 55px; /* adjust if needed */
-opacity: 0.95;
-pointer-events: none;
-animation: fall linear infinite;
+    position: absolute; 
+    top: -50px; /* Start slightly above the banner */
+    width: 40px; 
+    pointer-events: none;
+    z-index: 10; /* Keeps leaves on top of the banner */
+    animation: fall linear infinite;
 }
 
-/* Natural breeze falling (diagonal + rotation) */
+/* Falling animation */
 @keyframes fall {
-0% {
-transform: translate(0px, -120px) rotate(0deg);
-}
-20% {
-transform: translate(-15px, 20vh) rotate(45deg);
-}
-40% {
-transform: translate(25px, 40vh) rotate(90deg);
-}
-60% {
-transform: translate(-20px, 65vh) rotate(160deg);
-}
-80% {
-transform: translate(30px, 85vh) rotate(220deg);
-}
-100% {
-transform: translate(40px, 110vh) rotate(300deg);
-}
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
 }
 
-/* Top-right origin cluster */
-.leaf:nth-of-type(1) {
-right: 2%;
-animation-duration: 12s;
-}
-
-.leaf:nth-of-type(2) {
-right: 5%;
-animation-duration: 14s;
-}
-
-.leaf:nth-of-type(3) {
-right: 8%;
-animation-duration: 13s;
-}
-
-.leaf:nth-of-type(4) {
-right: 3%;
-animation-duration: 16s;
-}
-
-.leaf:nth-of-type(5) {
-right: 6%;
-animation-duration: 15s;
-}
-
-/* Slight variation in size for realism */
-.leaf:nth-of-type(2),
-.leaf:nth-of-type(4) {
-width: 45px;
-}
-
-.leaf:nth-of-type(3) {
-width: 60px;
-}
+/* Randomize positions and speed for a natural look */
+.leaf:nth-of-type(1) { right: 5%; animation-duration: 8s; }
+.leaf:nth-of-type(2) { right: 15%; animation-duration: 12s; animation-delay: 2s; }
+.leaf:nth-of-type(3) { right: 25%; animation-duration: 10s; animation-delay: 4s; }
+.leaf:nth-of-type(4) { right: 10%; animation-duration: 9s; animation-delay: 6s; }
+.leaf:nth-of-type(5) { right: 20%; animation-duration: 11s; animation-delay: 1s; }
 
 </style>
 </head>
 
 <body>
 
-<!-- Banner -->
-<img src="banner.png" class="banner">
-
-<!-- Real falling leaves -->
-<img src="leaf.png" class="leaf">
-<img src="leaf.png" class="leaf">
-<img src="leaf.png" class="leaf">
-<img src="leaf.png" class="leaf">
-<img src="leaf.png" class="leaf">
+<div class="banner-wrapper">
+    <img src="banner.png" class="banner" alt="Banner">
+    
+    <img src="leaf.png" class="leaf" alt="Leaf">
+    <img src="leaf.png" class="leaf" alt="Leaf">
+    <img src="leaf.png" class="leaf" alt="Leaf">
+    <img src="leaf.png" class="leaf" alt="Leaf">
+    <img src="leaf.png" class="leaf" alt="Leaf">
+</div>
 
 </body>
 </html>
