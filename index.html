@@ -5,54 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HSESTEPS</title>
     <style>
-        body { margin: 0; background: #000; overflow-x: hidden; }
-        
-        .banner-wrapper {
+        /* Base Reset */
+        body { margin: 0; padding: 0; background: #000; overflow-x: hidden; }
+
+        /* The main banner container */
+        .banner-container {
             position: relative;
             width: 100%;
-            overflow: hidden;
+            overflow: hidden; /* Keeps leaves from creating scrollbars */
         }
 
-        .banner { width: 100%; display: block; }
+        .banner {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-        /* Leaf styling: adjusted size and transparency */
-        .leaf {
+        /* The leaf styling */
+        .falling-leaf {
             position: absolute;
-            top: -100px;
-            width: 80px; /* Matched to look natural with your banner */
-            pointer-events: none;
-            z-index: 5;
-            animation: fall-and-sway linear infinite;
+            top: -150px; /* Start hidden above the top */
+            width: 100px; /* Matched size for prominence */
+            pointer-events: none; /* Allows clicking through the leaves */
+            z-index: 10; /* Ensures they float OVER the banner */
+            animation: fall-sway-animation linear infinite;
         }
 
-        /* Animation: Falling + Swinging (Swaying) */
-        @keyframes fall-and-sway {
-            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; }
-            25% { transform: translateY(25vh) translateX(50px) rotate(45deg); }
-            50% { transform: translateY(50vh) translateX(0px) rotate(0deg); }
-            75% { transform: translateY(75vh) translateX(-50px) rotate(-45deg); }
-            100% { transform: translateY(110vh) translateX(0px) rotate(0deg); opacity: 0; }
+        /* The animation: Falling, swaying side-to-side, and rotating */
+        @keyframes fall-sway-animation {
+            0% { 
+                transform: translateY(0) translateX(0) rotate(0deg); 
+                opacity: 0; 
+            }
+            10% { opacity: 1; } /* Fade in */
+            25% { transform: translateY(25vh) translateX(60px) rotate(45deg); }
+            50% { transform: translateY(50vh) translateX(-60px) rotate(90deg); }
+            75% { transform: translateY(75vh) translateX(40px) rotate(135deg); }
+            100% { 
+                transform: translateY(110vh) translateX(0) rotate(180deg); 
+                opacity: 0; /* Fade out at bottom */
+            }
         }
 
-        /* Positioning: Shifted more to the right side */
-        .leaf:nth-of-type(1) { right: 5%; animation-duration: 10s; }
-        .leaf:nth-of-type(2) { right: 12%; animation-duration: 14s; animation-delay: 2s; }
-        .leaf:nth-of-type(3) { right: 20%; animation-duration: 12s; animation-delay: 4s; }
-        .leaf:nth-of-type(4) { right: 8%; animation-duration: 11s; animation-delay: 6s; }
-        .leaf:nth-of-type(5) { right: 18%; animation-duration: 15s; animation-delay: 1s; }
+        /* Staggered Leaves: Different speeds and delays for natural look */
+        .leaf-1 { right: 5%; animation-duration: 14s; animation-delay: 0s; }
+        .leaf-2 { right: 15%; animation-duration: 18s; animation-delay: 3s; }
+        .leaf-3 { right: 25%; animation-duration: 16s; animation-delay: 6s; }
+        .leaf-4 { right: 8%; animation-duration: 12s; animation-delay: 9s; }
+        .leaf-5 { right: 20%; animation-duration: 15s; animation-delay: 2s; }
+
     </style>
 </head>
 <body>
 
-<div class="banner-wrapper">
-    <img src="banner.png" class="banner" alt="HSESTEPS Banner">
-    
-    <img src="leaf.png" class="leaf" alt="Leaf">
-    <img src="leaf.png" class="leaf" alt="Leaf">
-    <img src="leaf.png" class="leaf" alt="Leaf">
-    <img src="leaf.png" class="leaf" alt="Leaf">
-    <img src="leaf.png" class="leaf" alt="Leaf">
-</div>
+    <div class="banner-container">
+        <img src="banner.png" class="banner" alt="HSESTEPS Banner">
+
+        <img src="leaf.png" class="falling-leaf leaf-1" alt="Leaf">
+        <img src="leaf.png" class="falling-leaf leaf-2" alt="Leaf">
+        <img src="leaf.png" class="falling-leaf leaf-3" alt="Leaf">
+        <img src="leaf.png" class="falling-leaf leaf-4" alt="Leaf">
+        <img src="leaf.png" class="falling-leaf leaf-5" alt="Leaf">
+    </div>
 
 </body>
 </html>
