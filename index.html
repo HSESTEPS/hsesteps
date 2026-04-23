@@ -7,23 +7,24 @@
 <style>
 body {
 margin: 0;
-font-family: Arial, sans-serif;
+overflow: hidden;
 background: black;
 }
 
-/* Banner Image */
+/* Banner fits entire screen */
 .banner {
 width: 100%;
-height: auto;
+height: 100vh;
+object-fit: contain;
 display: block;
 }
 
-/* Leaf Style */
+/* Leaves */
 .leaf {
 position: fixed;
 top: -60px;
-width: 50px;
-height: 50px;
+width: 40px;
+height: 40px;
 background: radial-gradient(circle at 30% 30%, #00c853, #1b5e20);
 border-radius: 50% 0 50% 50%;
 opacity: 0.9;
@@ -31,23 +32,19 @@ animation: fall linear infinite, sway ease-in-out infinite;
 pointer-events: none;
 }
 
-/* Falling Animation */
+/* Falling */
 @keyframes fall {
-0% {
-transform: translateY(-60px) rotate(0deg);
-}
-100% {
-transform: translateY(120vh) rotate(360deg);
-}
+0% { transform: translateY(-60px) rotate(0deg); }
+100% { transform: translateY(110vh) rotate(360deg); }
 }
 
-/* Side-to-side gentle movement */
+/* Side movement */
 @keyframes sway {
-0%, 100% { transform: translateX(0px); }
-50% { transform: translateX(40px); }
+0%,100% { margin-left: 0px; }
+50% { margin-left: 40px; }
 }
 
-/* Positioning (right side like your banner) */
+/* Right-side placement */
 .leaf:nth-child(1) { left: 60%; animation-duration: 14s, 5s; }
 .leaf:nth-child(2) { left: 70%; animation-duration: 16s, 6s; }
 .leaf:nth-child(3) { left: 80%; animation-duration: 13s, 4s; }
@@ -55,15 +52,12 @@ transform: translateY(120vh) rotate(360deg);
 .leaf:nth-child(5) { left: 95%; animation-duration: 15s, 6s; }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- Banner -->
 <img src="banner.png" class="banner">
 
-<!-- Falling Leaves -->
 <div class="leaf"></div>
 <div class="leaf"></div>
 <div class="leaf"></div>
