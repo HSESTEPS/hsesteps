@@ -1,54 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>HSESTEPS</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSESTEPS</title>
+    <style>
+        body { margin: 0; background: #000; overflow-x: hidden; }
+        
+        .banner-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
 
-<style>
-body { margin: 0; background: black; }
+        .banner { width: 100%; display: block; }
 
-/* 1. Create a wrapper to hold the banner and the leaves together */
-.banner-wrapper {
-    position: relative; /* This makes the banner the reference point */
-    width: 100%;
-    overflow: hidden; /* Ensures leaves don't overflow outside the banner */
-}
+        /* Leaf styling: adjusted size and transparency */
+        .leaf {
+            position: absolute;
+            top: -100px;
+            width: 80px; /* Matched to look natural with your banner */
+            pointer-events: none;
+            z-index: 5;
+            animation: fall-and-sway linear infinite;
+        }
 
-.banner {
-    width: 100%;
-    display: block;
-}
+        /* Animation: Falling + Swinging (Swaying) */
+        @keyframes fall-and-sway {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 1; }
+            25% { transform: translateY(25vh) translateX(50px) rotate(45deg); }
+            50% { transform: translateY(50vh) translateX(0px) rotate(0deg); }
+            75% { transform: translateY(75vh) translateX(-50px) rotate(-45deg); }
+            100% { transform: translateY(110vh) translateX(0px) rotate(0deg); opacity: 0; }
+        }
 
-/* 2. Position leaves relative to the wrapper */
-.leaf {
-    position: absolute; 
-    top: -50px; /* Start slightly above the banner */
-    width: 40px; 
-    pointer-events: none;
-    z-index: 10; /* Keeps leaves on top of the banner */
-    animation: fall linear infinite;
-}
-
-/* Falling animation */
-@keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(100vh) rotate(360deg); }
-}
-
-/* Randomize positions and speed for a natural look */
-.leaf:nth-of-type(1) { right: 5%; animation-duration: 8s; }
-.leaf:nth-of-type(2) { right: 15%; animation-duration: 12s; animation-delay: 2s; }
-.leaf:nth-of-type(3) { right: 25%; animation-duration: 10s; animation-delay: 4s; }
-.leaf:nth-of-type(4) { right: 10%; animation-duration: 9s; animation-delay: 6s; }
-.leaf:nth-of-type(5) { right: 20%; animation-duration: 11s; animation-delay: 1s; }
-
-</style>
+        /* Positioning: Shifted more to the right side */
+        .leaf:nth-of-type(1) { right: 5%; animation-duration: 10s; }
+        .leaf:nth-of-type(2) { right: 12%; animation-duration: 14s; animation-delay: 2s; }
+        .leaf:nth-of-type(3) { right: 20%; animation-duration: 12s; animation-delay: 4s; }
+        .leaf:nth-of-type(4) { right: 8%; animation-duration: 11s; animation-delay: 6s; }
+        .leaf:nth-of-type(5) { right: 18%; animation-duration: 15s; animation-delay: 1s; }
+    </style>
 </head>
-
 <body>
 
 <div class="banner-wrapper">
-    <img src="banner.png" class="banner" alt="Banner">
+    <img src="banner.png" class="banner" alt="HSESTEPS Banner">
     
     <img src="leaf.png" class="leaf" alt="Leaf">
     <img src="leaf.png" class="leaf" alt="Leaf">
