@@ -5,49 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HSESTEPS</title>
     <style>
-        /* Base Reset */
         body { margin: 0; padding: 0; background: #000; overflow-x: hidden; }
 
-        /* The main banner container */
         .banner-container {
             position: relative;
-            width: 100%;
-            overflow: hidden; /* Keeps leaves from creating scrollbars */
+            width: 100%; /* Keeps container within screen width */
+            overflow: hidden; 
         }
 
         .banner {
-            width: 100%;
-            height: auto;
+            width: 100%; /* Forces banner to scale with screen width */
+            height: auto; /* Maintains aspect ratio */
             display: block;
         }
 
-        /* The leaf styling */
+        /* Responsive Leaf styling */
         .falling-leaf {
             position: absolute;
-            top: -150px; /* Start hidden above the top */
-            width: 100px; /* Matched size for prominence */
-            pointer-events: none; /* Allows clicking through the leaves */
-            z-index: 10; /* Ensures they float OVER the banner */
+            top: -10%; /* Percentage based start */
+            width: 8%; /* Leaf size scales with the screen width */
+            pointer-events: none;
+            z-index: 10;
             animation: fall-sway-animation linear infinite;
         }
 
-        /* The animation: Falling, swaying side-to-side, and rotating */
         @keyframes fall-sway-animation {
-            0% { 
-                transform: translateY(0) translateX(0) rotate(0deg); 
-                opacity: 0; 
-            }
-            10% { opacity: 1; } /* Fade in */
-            25% { transform: translateY(25vh) translateX(60px) rotate(45deg); }
-            50% { transform: translateY(50vh) translateX(-60px) rotate(90deg); }
-            75% { transform: translateY(75vh) translateX(40px) rotate(135deg); }
-            100% { 
-                transform: translateY(110vh) translateX(0) rotate(180deg); 
-                opacity: 0; /* Fade out at bottom */
-            }
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            25% { transform: translateY(25vh) translateX(5vw) rotate(45deg); }
+            50% { transform: translateY(50vh) translateX(-5vw) rotate(90deg); }
+            75% { transform: translateY(75vh) translateX(4vw) rotate(135deg); }
+            100% { transform: translateY(110vh) translateX(0) rotate(180deg); opacity: 0; }
         }
 
-        /* Staggered Leaves: Different speeds and delays for natural look */
+        /* Staggered Leaves using percentages for responsiveness */
         .leaf-1 { right: 5%; animation-duration: 14s; animation-delay: 0s; }
         .leaf-2 { right: 15%; animation-duration: 18s; animation-delay: 3s; }
         .leaf-3 { right: 25%; animation-duration: 16s; animation-delay: 6s; }
@@ -60,7 +51,6 @@
 
     <div class="banner-container">
         <img src="banner.png" class="banner" alt="HSESTEPS Banner">
-
         <img src="leaf.png" class="falling-leaf leaf-1" alt="Leaf">
         <img src="leaf.png" class="falling-leaf leaf-2" alt="Leaf">
         <img src="leaf.png" class="falling-leaf leaf-3" alt="Leaf">
